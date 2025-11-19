@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ikhsan Nurrohman | Electrical Engineering Student</title>
+    <title>Ikhsan Nurrohman | Electrical Engineering</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2E7D32;
-            --secondary: #4CAF50;
-            --dark: #1B5E20;
-            --light: #E8F5E9;
-            --gray: #757575;
-            --accent: #FF9800;
+            --primary: #0055FF;
+            --primary-dark: #0044CC;
+            --secondary: #00D4AA;
+            --dark: #1A1D29;
+            --dark-light: #2A2F42;
+            --light: #F8FAFC;
+            --gray: #64748B;
+            --gray-light: #CBD5E1;
+            --white: #FFFFFF;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
         }
 
         * {
@@ -27,10 +32,10 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
+            color: var(--dark);
+            background-color: var(--light);
             overflow-x: hidden;
         }
 
@@ -43,8 +48,8 @@
 
         /* Header & Navigation */
         header {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: var(--white);
+            box-shadow: var(--shadow);
             position: fixed;
             width: 100%;
             top: 0;
@@ -60,10 +65,25 @@
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
         }
 
         .nav-links {
@@ -87,19 +107,18 @@
             color: var(--primary);
         }
 
-        .nav-links a::after {
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
             content: '';
             position: absolute;
-            width: 0;
+            width: 100%;
             height: 2px;
             bottom: -5px;
             left: 0;
             background-color: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
         }
 
         .hamburger {
@@ -109,132 +128,170 @@
 
         /* Hero Section */
         .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, var(--white) 0%, #F0F7FF 100%);
             position: relative;
             overflow: hidden;
         }
 
         .hero-content {
-            max-width: 600px;
-            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
 
-        .hero h1 {
+        .hero-text h1 {
             font-size: 3rem;
-            margin-bottom: 15px;
+            font-weight: 700;
+            margin-bottom: 20px;
             line-height: 1.2;
         }
 
-        .hero h2 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            font-weight: 400;
-            opacity: 0.9;
+        .hero-text .highlight {
+            color: var(--primary);
         }
 
-        .hero p {
-            font-size: 1.1rem;
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--gray);
             margin-bottom: 30px;
-            opacity: 0.9;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: white;
-            color: var(--primary);
-            border: none;
-            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: var(--radius);
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border: none;
+            font-family: 'Inter', sans-serif;
         }
 
         .btn-primary {
             background-color: var(--primary);
-            color: white;
+            color: var(--white);
         }
 
-        .btn-outline {
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 85, 255, 0.3);
+        }
+
+        .btn-secondary {
             background-color: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-outline:hover {
-            background-color: white;
             color: var(--primary);
+            border: 1px solid var(--primary);
         }
 
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            right: 0;
-            height: 100%;
-            width: 50%;
-            background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') no-repeat center center;
-            background-size: cover;
-            clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+        .btn-secondary:hover {
+            background-color: rgba(0, 85, 255, 0.05);
         }
 
-        /* About Section */
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-card {
+            width: 100%;
+            max-width: 400px;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transform: rotate(3deg);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-card:hover {
+            transform: rotate(0deg);
+        }
+
+        .card-header {
+            background: var(--primary);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .card-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .card-label {
+            color: var(--gray);
+        }
+
+        .card-value {
+            font-weight: 600;
+        }
+
+        /* Section Styling */
         .section {
             padding: 100px 0;
         }
 
-        .section-title {
+        .section-header {
             text-align: center;
             margin-bottom: 60px;
         }
 
-        .section-title h2 {
+        .section-title {
             font-size: 2.5rem;
-            color: var(--dark);
+            font-weight: 700;
             margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
+            color: var(--dark);
         }
 
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            width: 70px;
-            height: 4px;
-            background-color: var(--primary);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        .section-title p {
+        .section-subtitle {
+            font-size: 1.1rem;
             color: var(--gray);
             max-width: 600px;
             margin: 0 auto;
         }
 
+        /* About Section */
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 60px;
             align-items: center;
         }
 
         .about-image {
-            border-radius: 10px;
+            border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
         }
 
         .about-image img {
@@ -262,17 +319,18 @@
         .skills {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 12px;
             margin-top: 30px;
         }
 
         .skill {
-            background-color: white;
-            padding: 10px 20px;
+            background-color: var(--white);
+            padding: 8px 16px;
             border-radius: 50px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow);
             font-weight: 500;
             transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
 
         .skill:hover {
@@ -283,7 +341,7 @@
 
         /* Experience Section */
         .experience {
-            background-color: #f5f5f5;
+            background-color: var(--white);
         }
 
         .timeline {
@@ -292,81 +350,64 @@
             margin: 0 auto;
         }
 
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: var(--primary);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-        }
-
         .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
+            display: flex;
+            margin-bottom: 40px;
         }
 
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 50%;
+        .timeline-date {
+            flex: 0 0 150px;
+            text-align: right;
+            padding-right: 30px;
+            color: var(--primary);
+            font-weight: 600;
         }
 
         .timeline-content {
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            background: var(--white);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
             position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: var(--primary);
+            border-radius: 50%;
+            left: -37px;
+            top: 30px;
         }
 
         .timeline-content::after {
             content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: white;
-            top: 20px;
-            border-radius: 50%;
-            z-index: 1;
-            border: 3px solid var(--primary);
+            width: 2px;
+            height: calc(100% + 40px);
+            background: var(--gray-light);
+            left: -30px;
+            top: 30px;
         }
 
-        .timeline-item:nth-child(odd) .timeline-content::after {
-            right: -10px;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content::after {
-            left: -10px;
-        }
-
-        .timeline-date {
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+        .timeline-item:last-child .timeline-content::after {
+            display: none;
         }
 
         .timeline-title {
             font-size: 1.3rem;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: var(--dark);
         }
 
         .timeline-subtitle {
             font-size: 1rem;
-            color: var(--gray);
+            color: var(--primary);
             margin-bottom: 10px;
-            font-style: italic;
+            font-weight: 500;
         }
 
         .timeline-desc {
@@ -392,12 +433,14 @@
         }
 
         .education-card {
-            background-color: white;
-            border-radius: 10px;
+            background-color: var(--white);
+            border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow);
             transition: all 0.3s ease;
-            padding: 25px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
         }
 
         .education-card:hover {
@@ -409,7 +452,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .education-title {
@@ -425,26 +468,26 @@
         }
 
         .education-date {
-            background-color: var(--light);
-            color: var(--primary);
-            padding: 5px 10px;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 5px 12px;
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 500;
         }
 
         .education-achievements {
-            margin-top: 15px;
+            margin-top: auto;
         }
 
         .achievement-item {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 10px;
-            padding: 10px;
+            margin-bottom: 12px;
+            padding: 12px;
             background-color: var(--light);
-            border-radius: 5px;
+            border-radius: 8px;
         }
 
         .achievement-icon {
@@ -460,10 +503,10 @@
         }
 
         .project-card {
-            background-color: white;
-            border-radius: 10px;
+            background-color: var(--white);
+            border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow);
             transition: all 0.3s ease;
         }
 
@@ -496,6 +539,18 @@
             font-size: 1.4rem;
             margin-bottom: 10px;
             color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .project-badge {
+            background-color: var(--primary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
         }
 
         .project-content p {
@@ -506,14 +561,14 @@
         .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 20px;
         }
 
         .project-tag {
-            background-color: #e9f7e9;
+            background-color: var(--light);
             color: var(--primary);
-            padding: 5px 12px;
+            padding: 5px 10px;
             border-radius: 50px;
             font-size: 0.8rem;
             font-weight: 500;
@@ -521,16 +576,16 @@
 
         /* Contact Section */
         .contact {
-            background-color: var(--dark);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
         }
 
-        .contact .section-title h2 {
+        .contact .section-title {
             color: white;
         }
 
-        .contact .section-title p {
-            color: rgba(255, 255, 255, 0.7);
+        .contact .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .contact-content {
@@ -559,7 +614,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--secondary);
+            color: white;
             font-size: 1.2rem;
         }
 
@@ -569,13 +624,14 @@
         }
 
         .contact-details p {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .contact-form {
             background-color: rgba(255, 255, 255, 0.05);
             padding: 30px;
-            border-radius: 10px;
+            border-radius: var(--radius);
+            backdrop-filter: blur(10px);
         }
 
         .form-group {
@@ -587,15 +643,15 @@
             padding: 12px 15px;
             background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
+            border-radius: 8px;
             color: white;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             transition: all 0.3s ease;
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--secondary);
+            border-color: rgba(255, 255, 255, 0.5);
             background-color: rgba(255, 255, 255, 0.15);
         }
 
@@ -605,31 +661,35 @@
         }
 
         .form-control::placeholder {
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.6);
         }
 
         /* Footer */
         footer {
-            background-color: #1a1a1a;
+            background-color: var(--dark);
             color: rgba(255, 255, 255, 0.7);
-            padding: 50px 0 20px;
+            padding: 70px 0 30px;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 40px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         .footer-about h3 {
             color: white;
             margin-bottom: 20px;
             font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .footer-about p {
             margin-bottom: 20px;
+            max-width: 400px;
         }
 
         .social-links {
@@ -651,7 +711,7 @@
         }
 
         .social-link:hover {
-            background-color: var(--secondary);
+            background-color: var(--primary);
             transform: translateY(-3px);
         }
 
@@ -676,18 +736,19 @@
         }
 
         .footer-links a:hover {
-            color: var(--secondary);
+            color: var(--primary);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
         }
 
         /* Responsive Design */
         @media (max-width: 992px) {
-            .hero h1 {
+            .hero-text h1 {
                 font-size: 2.5rem;
             }
             
@@ -711,7 +772,7 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: white;
+                background-color: var(--white);
                 flex-direction: column;
                 padding: 20px;
                 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -729,32 +790,32 @@
                 display: block;
             }
             
-            .hero h1 {
-                font-size: 2rem;
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
             
-            .hero-bg {
-                width: 100%;
-                opacity: 0.3;
-                clip-path: none;
+            .hero-text h1 {
+                font-size: 2.2rem;
             }
             
-            .timeline::after {
-                left: 31px;
+            .hero-buttons {
+                justify-content: center;
             }
             
             .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
+                flex-direction: column;
             }
             
-            .timeline-item:nth-child(even) {
-                left: 0;
+            .timeline-date {
+                flex: none;
+                text-align: left;
+                padding-right: 0;
+                margin-bottom: 10px;
             }
             
-            .timeline-content::after {
-                left: -10px;
+            .timeline-content::before, .timeline-content::after {
+                display: none;
             }
             
             .footer-content {
@@ -763,20 +824,20 @@
         }
 
         @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .section-title h2 {
+            .hero-text h1 {
                 font-size: 2rem;
             }
             
-            .projects-grid {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .projects-grid, .education-grid {
                 grid-template-columns: 1fr;
             }
             
-            .education-grid {
-                grid-template-columns: 1fr;
+            .hero-card {
+                transform: rotate(0deg);
             }
         }
 
@@ -791,18 +852,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Achievement Badges */
-        .badge {
-            display: inline-block;
-            padding: 3px 8px;
-            background-color: var(--accent);
-            color: white;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            margin-left: 5px;
-        }
     </style>
 </head>
 <body>
@@ -810,9 +859,12 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">Ikhsan.N</a>
+                <a href="#" class="logo">
+                    <div class="logo-icon">IN</div>
+                    Ikhsan.N
+                </a>
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#about">Tentang</a></li>
                     <li><a href="#experience">Pengalaman</a></li>
                     <li><a href="#education">Pendidikan</a></li>
@@ -830,24 +882,54 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1>Ikhsan Nurrohman</h1>
-                <h2>Electrical Engineering Student</h2>
-                <p>Mahasiswa Teknik Elektro semester 7 dengan minat di bidang robotika, desain grafis, dan media. Aktif dalam organisasi mahasiswa dan memiliki pengalaman dalam perawatan AC serta perbaikan peralatan rumah tangga.</p>
-                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                    <a href="#projects" class="btn btn-primary">Lihat Proyek</a>
-                    <a href="#contact" class="btn btn-outline">Hubungi Saya</a>
+                <div class="hero-text">
+                    <h1>Halo, Saya <span class="highlight">Ikhsan Nurrohman</span></h1>
+                    <p>Mahasiswa Teknik Elektro dengan minat di bidang robotika, elektronika industri, dan desain grafis. Aktif dalam organisasi dan kompetisi teknologi.</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fas fa-rocket"></i> Lihat Proyek
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-envelope"></i> Hubungi Saya
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-card">
+                        <div class="card-header">
+                            <i class="fas fa-id-card"></i>
+                            <span>Profil Singkat</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-item">
+                                <span class="card-label">Pendidikan</span>
+                                <span class="card-value">S1 Teknik Elektro</span>
+                            </div>
+                            <div class="card-item">
+                                <span class="card-label">Universitas</span>
+                                <span class="card-value">UNY</span>
+                            </div>
+                            <div class="card-item">
+                                <span class="card-label">IPK</span>
+                                <span class="card-value">3.61/4.00</span>
+                            </div>
+                            <div class="card-item">
+                                <span class="card-label">Minat</span>
+                                <span class="card-value">Robotika, Elektronika</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="hero-bg"></div>
     </section>
 
     <!-- About Section -->
     <section class="section" id="about">
         <div class="container">
-            <div class="section-title">
-                <h2>Tentang Saya</h2>
-                <p>Mahasiswa Teknik Elektro yang antusias dengan teknologi dan inovasi</p>
+            <div class="section-header">
+                <h2 class="section-title">Tentang Saya</h2>
+                <p class="section-subtitle">Mahasiswa Teknik Elektro yang antusias dengan teknologi dan inovasi</p>
             </div>
             <div class="about-content">
                 <div class="about-image">
@@ -865,6 +947,8 @@
                         <div class="skill">Photography</div>
                         <div class="skill">AC Maintenance</div>
                         <div class="skill">Team Leadership</div>
+                        <div class="skill">Problem Solving</div>
+                        <div class="skill">Project Management</div>
                     </div>
                 </div>
             </div>
@@ -874,15 +958,15 @@
     <!-- Experience Section -->
     <section class="section experience" id="experience">
         <div class="container">
-            <div class="section-title">
-                <h2>Pengalaman</h2>
-                <p>Pengalaman kerja dan organisasi saya</p>
+            <div class="section-header">
+                <h2 class="section-title">Pengalaman</h2>
+                <p class="section-subtitle">Pengalaman kerja dan organisasi saya</p>
             </div>
             <div class="timeline">
                 <!-- Work Experience -->
                 <div class="timeline-item fade-in">
+                    <div class="timeline-date">Mei 2021 - Jul 2021</div>
                     <div class="timeline-content">
-                        <div class="timeline-date"><i class="far fa-calendar-alt"></i> Mei 2021 - Jul 2021</div>
                         <h3 class="timeline-title">Technician Assistant</h3>
                         <div class="timeline-subtitle">Jaya Service, Pengasih, Kulon Progo, DIY</div>
                         <p class="timeline-desc">Jaya Servis adalah penyedia layanan terpercaya yang mengkhususkan diri dalam perbaikan dan perawatan sistem AC serta peralatan rumah tangga.</p>
@@ -896,8 +980,8 @@
                 
                 <!-- Organization 1 -->
                 <div class="timeline-item fade-in">
+                    <div class="timeline-date">Okt 2023 - Aug 2025</div>
                     <div class="timeline-content">
-                        <div class="timeline-date"><i class="far fa-calendar-alt"></i> Okt 2023 - Aug 2025</div>
                         <h3 class="timeline-title">UKM Rekayasa Teknologi</h3>
                         <div class="timeline-subtitle">Electronic Division - Participant in Thematic Robot Contest at KRI</div>
                         <ul class="timeline-list">
@@ -911,8 +995,8 @@
                 
                 <!-- Organization 2 -->
                 <div class="timeline-item fade-in">
+                    <div class="timeline-date">2022 - Sekarang</div>
                     <div class="timeline-content">
-                        <div class="timeline-date"><i class="far fa-calendar-alt"></i> 2022 - Sekarang</div>
                         <h3 class="timeline-title">Rismas Nur Hidayah</h3>
                         <div class="timeline-subtitle">Vice Chairman</div>
                         <p class="timeline-desc">Organisasi pemuda yang memberikan platform bagi pemuda Muslim untuk terlibat dalam kegiatan masyarakat dan pengembangan kepemimpinan.</p>
@@ -926,8 +1010,8 @@
                 
                 <!-- Organization 3 -->
                 <div class="timeline-item fade-in">
+                    <div class="timeline-date">2022 - Sekarang</div>
                     <div class="timeline-content">
-                        <div class="timeline-date"><i class="far fa-calendar-alt"></i> 2022 - Sekarang</div>
                         <h3 class="timeline-title">HME FT UNY</h3>
                         <div class="timeline-subtitle">Staff Media and Information</div>
                         <ul class="timeline-list">
@@ -943,9 +1027,9 @@
     <!-- Education Section -->
     <section class="section" id="education">
         <div class="container">
-            <div class="section-title">
-                <h2>Pendidikan</h2>
-                <p>Riwayat pendidikan dan prestasi akademik</p>
+            <div class="section-header">
+                <h2 class="section-title">Pendidikan</h2>
+                <p class="section-subtitle">Riwayat pendidikan dan prestasi akademik</p>
             </div>
             <div class="education-grid">
                 <!-- University -->
@@ -1010,9 +1094,9 @@
     <!-- Projects Section -->
     <section class="section" id="projects">
         <div class="container">
-            <div class="section-title">
-                <h2>Proyek & Prestasi</h2>
-                <p>Beberapa proyek dan pencapaian terbaru saya</p>
+            <div class="section-header">
+                <h2 class="section-title">Proyek & Prestasi</h2>
+                <p class="section-subtitle">Beberapa proyek dan pencapaian terbaru saya</p>
             </div>
             <div class="projects-grid">
                 <!-- Project 1 -->
@@ -1021,7 +1105,7 @@
                         <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Thematic Robot Contest">
                     </div>
                     <div class="project-content">
-                        <h3>Thematic Robot Contest <span class="badge">National Level</span></h3>
+                        <h3>Thematic Robot Contest <span class="project-badge">National Level</span></h3>
                         <p>Pengembangan sistem robotika untuk kompetisi KRI tingkat nasional dengan fokus pada integrasi sensor dan mikrokontroler.</p>
                         <div class="project-tags">
                             <span class="project-tag">Robotics</span>
@@ -1038,7 +1122,7 @@
                         <img src="https://images.unsplash.com/photo-1556655673-9d0816e8c0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Graphic Design">
                     </div>
                     <div class="project-content">
-                        <h3>Media & Design Content <span class="badge">HME FT UNY</span></h3>
+                        <h3>Media & Design Content <span class="project-badge">HME FT UNY</span></h3>
                         <p>Pembuatan konten grafis dan media untuk promosi kegiatan departemen Teknik Elektro UNY.</p>
                         <div class="project-tags">
                             <span class="project-tag">Graphic Design</span>
@@ -1054,7 +1138,7 @@
                         <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Electrical Competition">
                     </div>
                     <div class="project-content">
-                        <h3>ELCO 2023 Committee <span class="badge">Event</span></h3>
+                        <h3>ELCO 2023 Committee <span class="project-badge">Event</span></h3>
                         <p>Anggota panitia Electrical Competition (ELCO) 2023 dengan tema "Electrical Technology Innovation in Improving Environmental Quality".</p>
                         <div class="project-tags">
                             <span class="project-tag">Event Management</span>
@@ -1070,9 +1154,9 @@
     <!-- Contact Section -->
     <section class="section contact" id="contact">
         <div class="container">
-            <div class="section-title">
-                <h2>Kontak</h2>
-                <p>Jangan ragu untuk menghubungi saya untuk kolaborasi atau pertanyaan</p>
+            <div class="section-header">
+                <h2 class="section-title">Kontak</h2>
+                <p class="section-subtitle">Jangan ragu untuk menghubungi saya untuk kolaborasi atau pertanyaan</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
@@ -1132,7 +1216,9 @@
                         <div class="form-group">
                             <textarea class="form-control" placeholder="Pesan Anda" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Kirim Pesan</button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> Kirim Pesan
+                        </button>
                     </form>
                 </div>
             </div>
@@ -1144,7 +1230,10 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <h3>Ikhsan Nurrohman</h3>
+                    <h3>
+                        <div class="logo-icon">IN</div>
+                        Ikhsan Nurrohman
+                    </h3>
                     <p>Mahasiswa Teknik Elektro dengan minat di bidang robotika, elektronika, desain grafis, dan fotografi. Aktif dalam organisasi dan kompetisi teknologi.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
@@ -1170,6 +1259,16 @@
                         <li><a href="#projects">Elektronika</a></li>
                         <li><a href="#projects">Desain Grafis</a></li>
                         <li><a href="#projects">Fotografi</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Kontak</h4>
+                    <ul>
+                        <li><a href="tel:0859131258454">0859131258454</a></li>
+                        <li><a href="mailto:ikhsannurrohman154@gmail.com">ikhsannurrohman154@gmail.com</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Instagram</a></li>
                     </ul>
                 </div>
             </div>
@@ -1246,6 +1345,30 @@
                 header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
                 header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
             }
+        });
+        
+        // Active Navigation Link
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
