@@ -295,13 +295,12 @@
         }
 
         .about-image img {
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 50%;
+            width: 100%;
+            height: auto;
             display: block;
-            margin: 0 auto;
             transition: transform 0.5s ease;
+        }
+
         }
 
 
@@ -856,6 +855,12 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .blur-ipk {
+            filter: blur(6px);
+            user-select: none;
+        }
+
     </style>
 </head>
 <body>
@@ -915,8 +920,9 @@
                             </div>
                             <div class="card-item">
                                 <span class="card-label">IPK</span>
-                                <span class="card-value">3.61/4.00</span>
+                                <span class="card-value blur-ipk">3.61/4.00</span>
                             </div>
+
                             <div class="card-item">
                                 <span class="card-label">Minat</span>
                                 <span class="card-value">Robotika, Elektronika</span>
@@ -1377,5 +1383,6 @@
     </script>
 </body>
 </html>
+
 
 
